@@ -3,16 +3,15 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "16.18.1",
+    "node": "16",
     "npm": "Please Use PNPM instead of NPM",
-    "yarn": "Please Use PNPM instead of Yarn",
-    "pnpm": "7.20.0"
+    "yarn": "Please Use PNPM instead of Yarn"
   },
   "volta": {
-    "node": "16.18.1",
-    "pnpm": "7.20.0"
+    "node": "16.19.0",
+    "pnpm": "7.21.0"
   },
-  "packageManager": "pnpm@7.20.0",
+  "packageManager": "pnpm@7.21.0",
   "scripts": {
     "dev": "next",
     "build": "next build",

@@ -1,9 +1,11 @@
-import * as functions from "firebase-functions";
+import * as functions from 'firebase-functions';
+
+import { sum } from '@src/utils/sum';
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 
-export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", {structuredData: true});
-  response.send("Hello from Firebase!");
+export const helloWorld = functions.https.onRequest((_, response) => {
+  functions.logger.info('Hello logs!', { structuredData: true, sum: sum(1, 2, 3, 4) });
+  response.send(`Hello from Firebase! ${sum(1, 2, 3, 4, 2)}`);
 });
