@@ -12,5 +12,12 @@
     "node": "16.19.0",
     "pnpm": "7.21.0"
   },
-  "packageManager": "pnpm@7.21.0"
+  "packageManager": "pnpm@7.21.0",
+  "scripts": {
+    "gc": "git add . && git-cz"
+  },
+  "devDependencies": {
+    "commitizen": "^4.2.6",
+    "git-cz": "^4.9.0"
+  }
 }

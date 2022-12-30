@@ -15,6 +15,6 @@ module.exports = {
   },
   root: true,
   rules: {
-    'import/no-unresolved': 0,
+    'import/no-unresolved': 'off',
   },
 };
