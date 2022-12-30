@@ -17,7 +17,7 @@
     "gc": "git add . && git-cz"
   },
   "devDependencies": {
-    "commitizen": "^4.2.6",
-    "git-cz": "^4.9.0"
+    "commitizen": "4.2.6",
+    "git-cz": "4.9.0"
   }
 }
