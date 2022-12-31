@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/lodash': ^4.14.191
   '@typescript-eslint/eslint-plugin': 5.47.1
   '@typescript-eslint/parser': 5.47.1
   concurrently: 7.6.0
@@ -9,15 +10,24 @@ specifiers:
   firebase-admin: 10.3.0
   firebase-functions: 3.24.1
   firebase-functions-test: 0.2.3
+  libphonenumber-js: ^1.10.15
+  lodash: ^4.17.21
   prettier: 2.8.1
   tsc-alias: 1.8.2
+  typesaurus: 7.2.0
   typescript: 4.9.4
+  unique-names-generator: ^4.7.1
 
 dependencies:
   firebase-admin: 10.3.0
   firebase-functions: 3.24.1_firebase-admin@10.3.0
+  libphonenumber-js: 1.10.15
+  lodash: 4.17.21
+  typesaurus: 7.2.0
+  unique-names-generator: 4.7.1
 
 devDependencies:
+  '@types/lodash': 4.14.191
   '@typescript-eslint/eslint-plugin': 5.47.1_txmweb6yn7coi7nfrp22gpyqmy
   '@typescript-eslint/parser': 5.47.1_lzzuuodtsqwxnvqeq4g4likcqa
   concurrently: 7.6.0
@@ -76,8 +86,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@eslint/eslintrc/1.4.0:
-    resolution: {integrity: sha512-7yfvXy6MWLgWSFsLhz5yH3iQ52St8cdUY6FoGieKkRDVxuxmrNuUetIuu6cmjNWwniUHiWXjxCr5tTXDrbYS5A==}
+  /@eslint/eslintrc/1.4.1:
+    resolution: {integrity: sha512-XXrH9Uarn0stsyldqDYq8r++mROmWRI1xKMXa640Bb//SY1+ECYX6VzT6Lcx5frD0V30XieqJ0oX9I2Xj5aoMA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       ajv: 6.12.6
@@ -1950,7 +1960,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      '@eslint/eslintrc': 1.4.0
+      '@eslint/eslintrc': 1.4.1
       '@humanwhocodes/config-array': 0.11.8
       '@humanwhocodes/module-importer': 1.0.1
       '@nodelib/fs.walk': 1.2.8
@@ -2885,6 +2895,10 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /libphonenumber-js/1.10.15:
+    resolution: {integrity: sha512-sLeVLmWX17VCKKulc+aDIRHS95TxoTsKMRJi5s5gJdwlqNzMWcBCtSHHruVyXjqfi67daXM2SnLf2juSrdx5Sg==}
+    dev: false
 
   /lilconfig/2.0.6:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
@@ -4089,6 +4103,10 @@ packages:
       is-typedarray: 1.0.0
     optional: true
 
+  /typesaurus/7.2.0:
+    resolution: {integrity: sha512-qngW0ECsnEoPmX/nI2hNarmkQKGDH7R48InIZWsxmQa07NHVICutUZUkY2HdJX4LvcdDWZdcBedh0wudNMu1NA==}
+    dev: false
+
   /typescript/4.9.4:
     resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
     engines: {node: '>=4.2.0'}
@@ -4103,6 +4121,11 @@ packages:
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
     dev: true
+
+  /unique-names-generator/4.7.1:
+    resolution: {integrity: sha512-lMx9dX+KRmG8sq6gulYYpKWZc9RlGsgBR6aoO8Qsm3qvkSJ+3rAymr+TnV8EDMrIrwuFJ4kruzMWM/OpYzPoow==}
+    engines: {node: '>=8'}
+    dev: false
 
   /unique-string/2.0.0:
     resolution: {integrity: sha512-uNaeirEPvpZWSgzwsPGtU2zVSTrn/8L5q/IexZmH0eH6SA73CmAA5U4GwORTxQAZs95TAXLNqeLoPPNO5gZfWg==}
