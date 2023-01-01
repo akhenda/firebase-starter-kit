@@ -14,9 +14,13 @@
       "~/*": ["./*"],
       "@/*": ["./*"],
       "@root/*": ["./*"],
-      "@src/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@models/*": ["src/models/*"],
+      "@utils/*": ["src/utils/*"],
+      "@servers/*": ["src/servers/*"],
+      "@services/*": ["src/services/*"]
     }
   },
   "compileOnSave": true,
-  "include": ["src"]
+  "include": ["index.ts", "src", "modules.d.ts"]
 }

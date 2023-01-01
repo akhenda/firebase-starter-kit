@@ -3,7 +3,7 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ['heimdall/node'],
+  extends: ['heimdall/node', 'heimdall/tests'],
   ignorePatterns: [
     '/lib/**/*', // Ignore built files.
   ],

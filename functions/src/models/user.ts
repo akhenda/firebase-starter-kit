@@ -15,8 +15,8 @@ export interface User {
   username?: string | null;
   email?: string;
   phone?: string;
-  created_at: ServerTimestamp;
-  updated_at: ServerTimestamp;
+  createdAt: ServerTimestamp;
+  updatedAt: ServerTimestamp;
   photo: Image;
 }
 
@@ -60,14 +60,14 @@ function getUserInfoFromAuthUser(authUser: AuthUserRecord) {
 
   const name = displayName?.split(' ') || [];
   const data = {
-    created_at: serverTimestamp(),
+    createdAt: serverTimestamp(),
     email,
     name: { first: name[0] || '', last: name[1] || '' },
     phone: phoneNumber ? parsePhoneNumber(phoneNumber, 'KE').formatNational() : undefined,
     photo: photoURL
       ? getImage(photoURL)
       : getRandomAvatarImage(`${displayName || 'anonymous'}-${phoneNumber || email}`),
-    updated_at: serverTimestamp(),
+    updatedAt: serverTimestamp(),
     username: null,
   } satisfies User;
 

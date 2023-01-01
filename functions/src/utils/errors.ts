@@ -5,10 +5,16 @@ import isFunction from 'lodash/isFunction';
 export class ExtendableError extends Error {
   readonly type: string;
 
+  readonly code: number;
+
+  readonly status: number;
+
   constructor(message: string) {
     super(message);
     this.name = this.constructor.name;
     this.type = this.constructor.name;
+    this.code = 500;
+    this.status = 500;
 
     if (isFunction(Error.captureStackTrace)) {
       Error.captureStackTrace(this, this.constructor);
