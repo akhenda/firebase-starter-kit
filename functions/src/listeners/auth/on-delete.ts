@@ -1,15 +1,14 @@
 import * as functions from 'firebase-functions';
 
-import { UserClaimModel, UserModel } from '@src/models';
-import { bucket } from '@src/services';
+import { UserModel } from '@src/models';
 import { logs } from '@src/utils';
 
 export const authOnDelete = functions.auth.user().onDelete(async (user) => {
-  logs.deletingUserDocs(user);
+  logs.startListener('authOnCreate');
 
-  await UserModel.remove(user.uid);
-  await UserClaimModel.remove(user.uid);
-  await bucket.deleteFiles({ force: true, prefix: `users/${user.uid}` });
-
-  logs.allUserFilesDeleted(user);
+  try {
+    await UserModel.deleteUserData(user);
+  } catch (error) {
+    logs.functionExecError(error as Error);
+  }
 });

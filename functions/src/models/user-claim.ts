@@ -8,4 +8,6 @@ export interface UserClaim {
   updated_at: ServerTimestamp;
 }
 
-export const UserClaimModel = new DatabaseService<UserClaim>('user-claims');
+export class UserClaimSchema extends DatabaseService<UserClaim> {}
+
+export const UserClaimModel = new UserClaimSchema('user-claims');

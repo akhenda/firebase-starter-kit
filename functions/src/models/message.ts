@@ -6,4 +6,6 @@ export interface Message {
   content: string;
 }
 
-export const MessageModel = new DatabaseService<Message>('messages');
+export class MessageSchema extends DatabaseService<Message> {}
+
+export const MessageModel = new MessageSchema('messages');

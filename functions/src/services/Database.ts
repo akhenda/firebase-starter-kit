@@ -4,22 +4,35 @@ import type { AddModel } from 'typesaurus/add';
 
 export const db = admin.firestore();
 
-export class DatabaseService<T> {
+export abstract class DatabaseService<T> {
   collection;
 
-  // Specify 'authors', 'categories', or 'books' as collection name
+  /**
+   * Specify 'users', 'categories', 'books' or any name as collection name
+   *
+   * @param collectionName {string} The name of the collection to work with
+   */
   constructor(collectionName: string) {
     this.collection = collection<T>(collectionName);
   }
 
-  // returns list of records as an array of javascript objects
+  /**
+   * Returns list of documents as an array of javascript objects
+   *
+   * @returns {array} The list/array of documents you requested
+   */
   async getAll() {
     const docs = await all(this.collection);
 
     return docs;
   }
 
-  // returns a single document in object format
+  /**
+   * Returns a single document in object format
+   *
+   * @param id {string} The ID of the document to fetch
+   * @returns {object|null} The found document
+   */
   async getOne(id?: string) {
     if (!id) return null; // entity form is in create mode
 
@@ -28,7 +41,13 @@ export class DatabaseService<T> {
     return doc;
   }
 
-  // save a new document in the database
+  /**
+   * Save a new document in the database
+   *
+   * @param data {object} The new data to save/create
+   * @param id {string} The id of the document if we want it to have a specific ID
+   * @returns {object} The created/saved document
+   */
   async create(data: AddModel<T>, id?: string) {
     const values = {
       ...data,
@@ -41,14 +60,29 @@ export class DatabaseService<T> {
     return doc;
   }
 
-  // update an existing document with new data
-  async update(id: string, values: Partial<T>) {
+  /**
+   * Update an existing document with new data.
+   *
+   * When just the doc id is passed, we only update the updatedAt field.
+   * We need this at times to force rgeneration of a firebase's user IdToken
+   * when we update the user doc.
+   *
+   * @param id {string} The ID of the document
+   * @param values {object} The data to update. Can be an empty object to only
+   * update the updatedAt field
+   * @returns {object} The updated document
+   */
+  async update(id: string, values: Partial<T> = {}) {
     const doc = await update(this.collection, id, { ...values, updatedAt: value('serverDate') });
 
     return doc;
   }
 
-  // delete an existing document from the collection
+  /**
+   * Delete an existing document from the collection
+   *
+   * @param id {string} The ID of the document to delete
+   */
   async remove(id: string) {
     await remove(this.collection, id);
   }

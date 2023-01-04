@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
 
-import * as logs from '@utils/logs';
+import { logs } from '@src/utils';
 
 if (!admin.apps.length) admin.initializeApp();
 

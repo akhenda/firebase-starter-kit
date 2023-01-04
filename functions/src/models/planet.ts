@@ -7,4 +7,6 @@ export interface Planet {
   messages: DocumentReference[];
 }
 
-export const PlanetModel = new DatabaseService<Planet>('planets');
+export class PlanetSchema extends DatabaseService<Planet> {}
+
+export const PlanetModel = new PlanetSchema('planets');
