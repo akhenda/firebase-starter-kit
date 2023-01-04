@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Firebase Functions Unit Tests Auth when a user signs up, a user profile is created in firestore 1`] = `
+{
+  "createdAt": Timestamp {
+    "_nanoseconds": 919000000,
+    "_seconds": 1672772162,
+  },
+  "email": "user-1T2E3S4T5U6S7E8R@example.com",
+  "name": {
+    "first": "Test",
+    "last": "User",
+  },
+  "phone": "0720 123456",
+  "photo": {
+    "full": "https://placeimg.com/640/480/people",
+    "l": "https://placeimg.com/640/480/people?size=720",
+    "m": "https://placeimg.com/640/480/people?size=360",
+    "s": "https://placeimg.com/640/480/people?size=200",
+    "xl": "https://placeimg.com/640/480/people?size=1024",
+    "xs": "https://placeimg.com/640/480/people?size=100",
+    "xxl": "https://placeimg.com/640/480/people?size=1920",
+  },
+  "updatedAt": Timestamp {
+    "_nanoseconds": 919000000,
+    "_seconds": 1672772162,
+  },
+  "username": null,
+}
+`;

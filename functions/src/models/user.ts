@@ -1,9 +1,11 @@
+import * as admin from 'firebase-admin';
 import { parsePhoneNumber } from 'libphonenumber-js';
 import { animals, colors, uniqueNamesGenerator } from 'unique-names-generator';
 
 import { DatabaseService, Image } from '@src/services';
 import type { AuthUserRecord, ServerTimestamp } from '@src/types';
-import { serverTimestamp } from '@src/utils';
+
+const { serverTimestamp } = admin.firestore.FieldValue;
 
 export interface UserFullName {
   first: string;

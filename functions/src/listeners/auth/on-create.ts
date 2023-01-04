@@ -2,31 +2,31 @@ import * as functions from 'firebase-functions';
 
 import { UserModel, UserService } from '@src/models';
 import { auth } from '@src/services';
-import { log, logE } from '@src/utils';
+import { logs } from '@src/utils';
 
 export const authOnCreate = functions.auth.user().onCreate(async (user) => {
+  logs.startListener('authOnCreate');
+
   try {
     const data = UserService.getUserInfoFromAuthUser(user);
 
-    log('UserData => ', data);
+    logs.createdUserProfile(data);
 
     await auth
       .setCustomUserClaims(user.uid, {})
-      .then(() => log(`Custom claims set for user => ${user.uid}`))
-      .catch((err) => {
-        logE(`Unable to set custom claims on user => ${user.uid}`, err);
-        throw new Error(err);
+      .then(() => logs.setClaims(user))
+      .catch((error: unknown) => {
+        logs.setClaimsError(user, error as Error);
+        throw error;
       });
 
-    log(`Creating document for user => ${user.uid}`);
+    logs.creatingUserDoc(user);
 
     await UserModel.create(data, user.uid);
 
     // also update the auth user photoURL
-    if (data.photo.full) auth.updateUser(user.uid, { photoURL: data.photo.full });
-
-    return await Promise.resolve();
+    if (data.photo.full) await auth.updateUser(user.uid, { photoURL: data.photo.full });
   } catch (error) {
-    return Promise.reject(error);
+    logs.functionExecError(error as Error);
   }
 });

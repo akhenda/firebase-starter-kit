@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import camelcaseKeys from 'camelcase-keys';
 import type { NextFunction, Request, Response } from 'express';
 import type { auth as Auth } from 'firebase-admin';

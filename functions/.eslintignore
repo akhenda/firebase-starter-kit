@@ -1,0 +1,9 @@
+/list
+/node_modules
+.eslintrc.js
+jest.config.js
+coverage
+/coverage
+
+# Ignore built files.
+/lib/**/*

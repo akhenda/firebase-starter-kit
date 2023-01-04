@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin';
-import { add, all, collection, get, remove, set, update } from 'typesaurus';
+import { add, all, collection, get, remove, set, update, value } from 'typesaurus';
 import type { AddModel } from 'typesaurus/add';
 
 export const db = admin.firestore();
@@ -30,14 +30,20 @@ export class DatabaseService<T> {
 
   // save a new document in the database
   async create(data: AddModel<T>, id?: string) {
-    const doc = id ? await set(this.collection, id, data) : await add(this.collection, data);
+    const values = {
+      ...data,
+      createdAt: value('serverDate'),
+      updatedAt: value('serverDate'),
+    };
+
+    const doc = id ? await set(this.collection, id, values) : await add(this.collection, values);
 
     return doc;
   }
 
   // update an existing document with new data
   async update(id: string, values: Partial<T>) {
-    const doc = await update(this.collection, id, values);
+    const doc = await update(this.collection, id, { ...values, updatedAt: value('serverDate') });
 
     return doc;
   }
