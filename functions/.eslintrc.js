@@ -13,6 +13,8 @@ module.exports = {
   plugins: ['jest-extended'],
   root: true,
   rules: {
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+
     'import/no-unresolved': 'off',
 
     'jest-extended/prefer-to-be-false': 'error',

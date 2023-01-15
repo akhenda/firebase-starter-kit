@@ -2,9 +2,10 @@ import { DatabaseService } from '@src/services';
 import type { DocumentReference } from '@src/types';
 
 export interface Planet {
+  id?: string;
   name: string;
   habitable: boolean;
-  messages: DocumentReference[];
+  messages?: DocumentReference[];
 }
 
 export class PlanetSchema extends DatabaseService<Planet> {}

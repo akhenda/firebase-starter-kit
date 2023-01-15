@@ -1,7 +1,7 @@
 import * as functions from 'firebase-functions';
 
 import { UserModel } from '@src/models';
-import { bucket, getThumbsFromFilePath, Image } from '@src/services/Storage';
+import { getThumbsFromFilePath, Image, storage } from '@src/services/Storage';
 import { logs } from '@src/utils';
 
 export const onProfilePicUpload = functions
@@ -45,7 +45,7 @@ export const onProfilePicUpload = functions
 
       await Promise.all(
         Object.entries(userPhoto).map(async ([key, item]: [string, string]) => {
-          const photo = bucket.file(item);
+          const photo = storage.bucket('hc-starter-kits.appspot.com').file(item);
           let [photoURL] = await photo.getSignedUrl({ action: 'read', expires: '03-09-2491' });
 
           // we need this for local testing

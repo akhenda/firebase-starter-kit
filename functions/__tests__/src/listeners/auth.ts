@@ -1,16 +1,14 @@
-/* eslint-disable security/detect-non-literal-fs-filename */
 import path from 'path';
 
 import { FirebaseEmulator } from '@tests/__utils__/emulator';
-import * as admin from 'firebase-admin';
 
 import { authOnCreate, authOnDelete } from '@src/listeners/auth';
 import type { User } from '@src/models';
+import { serverTimestamp } from '@src/utils';
 
 const firebase = new FirebaseEmulator();
-const { mockConsoleLog, mockSetCustomUserClaims } = FirebaseEmulator.mocks();
-const { firestore: db, makeUserRecord, wrap, storage } = firebase;
-const { serverTimestamp } = admin.firestore.FieldValue;
+const { firestore: db, makeUserRecord, wrap, storage, mocks } = firebase;
+const { mockConsoleLog, mockSetCustomUserClaims } = mocks();
 
 // eslint-disable-next-line jest/no-export
 export default function authTests() {
@@ -39,16 +37,13 @@ export default function authTests() {
       // Call the wrapped auth.onCreate function
       await wrapped(user);
 
-      expect(mockConsoleLog).toHaveBeenCalledTimes(4);
-      expect(mockConsoleLog).toHaveBeenNthCalledWith(1, "Started execution of 'authOnCreate' function");
-      expect(mockConsoleLog).toHaveBeenNthCalledWith(3, `Custom claims set for user => ${user.uid}`);
-      expect(mockConsoleLog).toHaveBeenNthCalledWith(4, `Creating document for user => ${user.uid}`, user);
+      expect(mockConsoleLog).toHaveBeenCalledTimes(5);
+      expect(mockConsoleLog).toMatchSnapshot();
 
       // Check the data was written to the Firestore emulator
       const snap = await db.collection('users').doc(uid).get();
       const data = snap.data() as User | undefined;
 
-      expect(data).toMatchSnapshot();
       expect(data?.createdAt).toBeTruthy();
       expect(snap.id).toEqual(uid);
       expect(data?.email).toEqual(email);
@@ -116,7 +111,7 @@ export default function authTests() {
       // this should delete all user docs and files in storage
       await wrapped(makeUserRecord({ uid }));
 
-      expect(mockConsoleLog).toHaveBeenCalledTimes(2);
+      expect(mockConsoleLog).toHaveBeenCalledTimes(3);
 
       // expect the created file not to exist
       expect((await bucket.file(`users/${uid}/test-file.md`).exists())[0]).toBeFalse();

@@ -1,6 +1,7 @@
 # Compiled JavaScript files
 lib/**/*.js
 lib/**/*.js.map
+lib/*
 
 # TypeScript v1 declaration files
 typings/
@@ -11,3 +12,4 @@ node_modules/
 coverage
 test-data
 firestore-coverage.html
+__tests__/__data__/*

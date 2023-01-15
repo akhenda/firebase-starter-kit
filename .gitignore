@@ -519,3 +519,5 @@ node_modules/
 .env
 
 test-data
+__tests__/__data__/*
+__tests__/data/*

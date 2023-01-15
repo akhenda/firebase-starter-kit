@@ -1,30 +1,210 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Firebase Functions Unit Tests Auth when a user signs up, a user profile is created in firestore 1`] = `
+[MockFunction] {
+  "calls": [
+    [
+      "Started execution of 'authOnCreate' function",
+    ],
+    [
+      "UserData => ",
+      {
+        "createdAt": ServerTimestampTransform {},
+        "email": "user-1T2E3S4T5U6S7E8R@example.com",
+        "name": {
+          "first": "Test",
+          "last": "User",
+        },
+        "phone": "0720 123456",
+        "photo": {
+          "full": "https://placeimg.com/640/480/people",
+          "l": "https://placeimg.com/640/480/people?size=720",
+          "m": "https://placeimg.com/640/480/people?size=360",
+          "s": "https://placeimg.com/640/480/people?size=200",
+          "xl": "https://placeimg.com/640/480/people?size=1024",
+          "xs": "https://placeimg.com/640/480/people?size=100",
+          "xxl": "https://placeimg.com/640/480/people?size=1920",
+        },
+        "updatedAt": ServerTimestampTransform {},
+        "username": null,
+      },
+    ],
+    [
+      "Setting custom claims for user => 1T2E3S4T5U6S7E8R",
+      {},
+    ],
+    [
+      "Creating document for user => 1T2E3S4T5U6S7E8R",
+      {
+        "customClaims": {},
+        "disabled": false,
+        "displayName": "Test User",
+        "email": "user-1T2E3S4T5U6S7E8R@example.com",
+        "emailVerified": false,
+        "metadata": {
+          "creationTime": null,
+          "lastSignInTime": null,
+        },
+        "passwordHash": null,
+        "passwordSalt": null,
+        "phoneNumber": "0720 123456",
+        "photoURL": "https://placeimg.com/640/480/people",
+        "providerData": [],
+        "tokensValidAfterTime": null,
+        "uid": "1T2E3S4T5U6S7E8R",
+      },
+    ],
+    [
+      "User data update => ",
+      {
+        "docData": {
+          "createdAt": ServerTimestampTransform {},
+          "email": "user-1T2E3S4T5U6S7E8R@example.com",
+          "name": {
+            "first": "Test",
+            "last": "User",
+          },
+          "phone": "0720 123456",
+          "photo": {
+            "full": "https://placeimg.com/640/480/people",
+            "l": "https://placeimg.com/640/480/people?size=720",
+            "m": "https://placeimg.com/640/480/people?size=360",
+            "s": "https://placeimg.com/640/480/people?size=200",
+            "xl": "https://placeimg.com/640/480/people?size=1024",
+            "xs": "https://placeimg.com/640/480/people?size=100",
+            "xxl": "https://placeimg.com/640/480/people?size=1920",
+          },
+          "updatedAt": ServerTimestampTransform {},
+          "username": null,
+        },
+        "uid": "1T2E3S4T5U6S7E8R",
+        "update": {
+          "photoURL": "https://placeimg.com/640/480/people",
+        },
+      },
+    ],
+  ],
+  "results": [
+    {
+      "type": "return",
+      "value": undefined,
+    },
+    {
+      "type": "return",
+      "value": undefined,
+    },
+    {
+      "type": "return",
+      "value": undefined,
+    },
+    {
+      "type": "return",
+      "value": undefined,
+    },
+    {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Firebase Functions Unit Tests Express Servers (HTTPS) Example Server GraphQL gets all books 1`] = `
 {
-  "createdAt": Timestamp {
-    "_nanoseconds": 919000000,
-    "_seconds": 1672772162,
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "books": [
+          {
+            "author": "Kate Chopin",
+            "title": "The Awakening",
+          },
+          {
+            "author": "Paul Auster",
+            "title": "City of Glass",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
   },
-  "email": "user-1T2E3S4T5U6S7E8R@example.com",
-  "name": {
-    "first": "Test",
-    "last": "User",
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
   },
-  "phone": "0720 123456",
-  "photo": {
-    "full": "https://placeimg.com/640/480/people",
-    "l": "https://placeimg.com/640/480/people?size=720",
-    "m": "https://placeimg.com/640/480/people?size=360",
-    "s": "https://placeimg.com/640/480/people?size=200",
-    "xl": "https://placeimg.com/640/480/people?size=1024",
-    "xs": "https://placeimg.com/640/480/people?size=100",
-    "xxl": "https://placeimg.com/640/480/people?size=1920",
+}
+`;
+
+exports[`Firebase Functions Unit Tests Express Servers (HTTPS) Planets Server GraphQL gets all planets 1`] = `
+{
+  "body": {
+    "kind": "single",
+    "singleResult": {
+      "data": {
+        "planets": [
+          {
+            "habitable": false,
+            "id": "mars-123",
+            "name": "Mars",
+          },
+          {
+            "habitable": true,
+            "id": "earth-616",
+            "name": "Earth",
+          },
+          {
+            "habitable": true,
+            "id": "xandar1111",
+            "name": "Xandar",
+          },
+        ],
+      },
+      "errors": undefined,
+    },
   },
-  "updatedAt": Timestamp {
-    "_nanoseconds": 919000000,
-    "_seconds": 1672772162,
+  "http": {
+    "headers": Map {
+      "cache-control" => "no-store",
+    },
+    "status": undefined,
   },
-  "username": null,
+}
+`;
+
+exports[`Firebase Functions Unit Tests Firestore when a user-claim doc is updated, and the updatedAt field changed skip updates to avoid infinite loops 1`] = `
+[MockFunction] {
+  "calls": [
+    [
+      "No custom claims changes. Skipping update...",
+      {
+        "afterData": {
+          "admin": true,
+          "manager": false,
+          "updatedAt": Timestamp {
+            "_nanoseconds": 0,
+            "_seconds": 1633884756,
+          },
+        },
+        "beforeData": {
+          "admin": true,
+          "manager": false,
+          "updatedAt": Timestamp {
+            "_nanoseconds": 0,
+            "_seconds": 1633904756,
+          },
+        },
+        "skipUpdate": true,
+      },
+    ],
+  ],
+  "results": [
+    {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
 }
 `;

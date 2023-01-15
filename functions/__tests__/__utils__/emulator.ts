@@ -5,21 +5,6 @@ import firebaseFunctionsTest from 'firebase-functions-test';
 import type { FeaturesList } from 'firebase-functions-test/lib/features';
 
 export class FirebaseEmulator {
-  static mocks() {
-    const mockConsoleLog = jest.spyOn(logger, 'log').mockImplementation();
-    const mockConsoleInfo = jest.spyOn(logger, 'info').mockImplementation();
-    const mockConsoleError = jest.spyOn(logger, 'error').mockImplementation();
-
-    const mockSetCustomUserClaims = jest.spyOn(admin.auth(), 'setCustomUserClaims').mockImplementation(
-      () =>
-        new Promise((res) => {
-          res();
-        }),
-    );
-
-    return { mockConsoleError, mockConsoleInfo, mockConsoleLog, mockSetCustomUserClaims };
-  }
-
   auth: admin.auth.Auth;
 
   firestore: admin.firestore.Firestore;
@@ -38,9 +23,31 @@ export class FirebaseEmulator {
 
   makeUserRecord: FeaturesList['auth']['makeUserRecord'];
 
+  mocks = () => {
+    const mockConsoleLog = jest.spyOn(logger, 'log').mockImplementation();
+    const mockConsoleInfo = jest.spyOn(logger, 'info').mockImplementation();
+    const mockConsoleWarn = jest.spyOn(logger, 'warn').mockImplementation();
+    const mockConsoleError = jest.spyOn(logger, 'error').mockImplementation();
+    const mockSetCustomUserClaims = jest.spyOn(admin.auth(), 'setCustomUserClaims').mockImplementation(async () => {});
+
+    const mockUpdateUser = jest
+      .spyOn(admin.auth(), 'updateUser')
+      .mockImplementation(async () => this.test.auth.makeUserRecord({}));
+
+    return {
+      mockConsoleError,
+      mockConsoleInfo,
+      mockConsoleLog,
+      mockConsoleWarn,
+      mockSetCustomUserClaims,
+      mockUpdateUser,
+    };
+  };
+
   constructor() {
     if (!admin.apps.length) {
       process.env.FIRESTORE_EMULATOR_HOST = 'localhost:8080';
+      process.env.FIREBASE_AUTH_EMULATOR_HOST = 'localhost:9099';
 
       admin.initializeApp();
     }

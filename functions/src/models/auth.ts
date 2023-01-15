@@ -1,7 +1,7 @@
 import { AuthService } from '@src/services';
 import type { AuthUserRecordUpdate, DocumentData } from '@src/types';
 
-function generateAuthUserFromDocData(data: DocumentData): AuthUserRecordUpdate {
+export function generateAuthUserFromDocData(data: DocumentData): AuthUserRecordUpdate {
   const updatePayload = {} as AuthUserRecordUpdate;
 
   // disable phone number updating for now

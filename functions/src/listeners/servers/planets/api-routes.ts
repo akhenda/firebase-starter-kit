@@ -8,13 +8,13 @@ router.get('/', (_: Request, res: Response) => {
   res.send('Hello, All Planets!');
 });
 
-router.post('/snap-finger', (_: Request, res: Response) => {
+router.post('/snap-finger', (req: Request, res: Response) => {
   // const { body, query, params } = req;
   // console.log('====================================');
-  // console.log({ body, query, params });
+  // console.log({ body, params, query });
   // console.log('====================================');
   res.status(201);
-  res.send('Half of the total population in all planets exterminated');
+  res.json({ message: `Half of the total population in ${req.body.planets} exterminated` });
 });
 
 export default router;

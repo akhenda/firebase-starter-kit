@@ -2,29 +2,56 @@ import { ApolloServer } from '@apollo/server';
 
 import { PlanetModel } from '@src/models/planet';
 
-export default function getGraphQLServer() {
-  const resolvers = {
-    Query: {
-      planets: async () => {
-        const docs = await PlanetModel.getAll();
+interface PlanetsResolverArgs {
+  id: string;
+}
 
-        return docs.map((doc) => doc.data);
-      },
+interface AddPlanetMutationParams {
+  name: string;
+  habitable: boolean;
+}
+
+export const resolvers = {
+  Mutation: {
+    addPlanet: async (_: unknown, { name, habitable }: AddPlanetMutationParams) => {
+      const doc = await PlanetModel.create({ habitable, name });
+
+      return doc?.id;
     },
-  };
+  },
+  Query: {
+    planet: async (_: unknown, args: PlanetsResolverArgs) => {
+      const doc = await PlanetModel.getOne(args.id);
 
-  const typeDefs = `#graphql
-    type Planet {
-      name: String
-      habitable: Boolean
-      messages: [String]
-    }
+      return { ...doc?.data, id: doc?.ref.id };
+    },
+    planets: async () => {
+      const docs = await PlanetModel.getAll();
 
-    type Query {
-      planets: [Planet]
-    }
-  `;
+      return docs.map((doc) => ({ ...doc?.data, id: doc?.ref.id }));
+    },
+  },
+};
 
+export const typeDefs = `#graphql
+  type Planet {
+    id: ID
+    name: String
+    habitable: Boolean
+    messages: [String]
+  }
+
+  type Query {
+    planets: [Planet]
+    planet(id: ID!): Planet
+  }
+
+  type Mutation {
+    addPlanet(name: String!, habitable: Boolean!): ID
+  }
+`;
+
+export default function getGraphQLServer() {
   const server = new ApolloServer({
     introspection: true,
     resolvers,
