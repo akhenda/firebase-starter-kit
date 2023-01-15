@@ -1,7 +1,13 @@
-// import usersTests from './users';
+import { afterAllTests, beforeAllTests, beforeEachTest } from '@tests/__utils__/rules';
+
+import usersTests from './users';
 
 describe('Security Rules Unit Tests', () => {
-  // usersTests();
+  beforeAll(beforeAllTests);
 
-  it.todo('rules tests');
+  afterAll(afterAllTests);
+
+  beforeEach(beforeEachTest);
+
+  usersTests();
 });

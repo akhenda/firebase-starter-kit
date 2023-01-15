@@ -19,7 +19,6 @@ module.exports = {
   },
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
   verbose: true,
-  // watchAll: true,
   collectCoverage: true,
   coverageReporters: ['json', 'html', 'text-summary', 'lcov'],
   coverageThreshold: {

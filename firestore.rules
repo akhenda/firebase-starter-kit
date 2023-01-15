@@ -1,9 +1,76 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if
-          request.time < timestamp.date(2023, 4, 27);
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isManager() {
+      return request.auth.token.isManager == true;
+    }
+
+    // function isEditor() {
+    //   return request.auth.token.isEditor == true;
+    // }
+
+    // function isUser() {
+    //   return request.auth.token.isUser == true;
+    // }
+
+    // function isCurrentUser(uid) {
+    //   return isSignedIn() && request.auth.uid == uid;
+    // }
+
+    function isDocOwner(uid) {
+      return isSignedIn() && (resource.data.owner == request.auth.uid || request.auth.uid == uid);
+    }
+
+    function isValidTime(time) {
+      return request.resource.data[time] == request.time;
+    }
+
+    function isValidNewDoc(uid) {
+      // Valid if doc does not exist and the new doc has the correct owner.
+      return resource == null && isDocOwner(uid);
+    }
+
+    match /user-claims/{uid} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    match /users/{uid} {
+      allow read: if isDocOwner(uid) || isAdmin() || isManager();
+      allow create: if isValidNewDoc(uid) && isValidTime('createdAt');
+      allow update: if isDocOwner(uid) && isValidTime('updatedAt');
+
+      match /public/{document=**} {
+        allow read: if true;
+        allow create: if isValidNewDoc(uid) && isValidTime('createdAt');
+        allow update: if isDocOwner(uid) && isValidTime('updatedAt');
+      }
+
+      match /notifications/{document=**} {
+        allow read: if isDocOwner(uid) || isAdmin();
+      }
+    }
+
+    // match /users/{uid}/public/{document=**} {
+    //   allow read: if true;
+    //   allow create: if isValidNewDoc(uid) && isValidTime('createdAt');
+    //   allow update: if isDocOwner(uid) && isValidTime('updatedAt');
+    // }
+
+    match /rooms/{roomId} {
+      allow read;
+      // If you create a room, you must set yourself as the owner.
+      allow create: if request.resource.data.owner == request.auth.uid;
+      // Only the room owner is allowed to modify it, and owner mustn't be able to assign his room to other user.
+      allow update: if resource.data.owner == request.auth.uid && request.resource.data.owner == request.auth.uid;
     }
   }
 }
