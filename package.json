@@ -9,15 +9,15 @@
     "yarn": "Please Use PNPM instead of Yarn"
   },
   "volta": {
-    "node": "16.19.0",
+    "node": "16.20.0",
     "pnpm": "7.21.0"
   },
-  "packageManager": "pnpm@7.21.0",
+  "packageManager": "pnpm@7.33.0",
   "scripts": {
     "gc": "git add . && git-cz"
   },
   "devDependencies": {
-    "commitizen": "4.2.6",
+    "commitizen": "4.3.0",
     "git-cz": "4.9.0"
   }
 }
