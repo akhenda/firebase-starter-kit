@@ -9,10 +9,10 @@
     "yarn": "Please Use PNPM instead of Yarn"
   },
   "volta": {
-    "node": "16.20.0",
-    "pnpm": "7.21.0"
+    "node": "16.20.2",
+    "pnpm": "7.33.6"
   },
-  "packageManager": "pnpm@7.33.0",
+  "packageManager": "pnpm@7.33.6",
   "main": "lib/src/index.js",
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
@@ -46,7 +46,7 @@
     "express-youch": "^1.0.1",
     "firebase": "^9.15.0",
     "firebase-admin": "10.3.0",
-    "firebase-functions": "4.4.0",
+    "firebase-functions": "4.4.1",
     "fs-extra": "^11.1.0",
     "graphql": "^16.6.0",
     "helmet": "^6.2.0",
@@ -70,19 +70,19 @@
     "@types/compression": "^1.7.2",
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.3",
+    "@types/express": "^4.17.15",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^29.5.2",
     "@types/lodash": "^4.14.191",
     "@types/morgan": "^1.9.4",
-    "@types/node": "^18.16.16",
+    "@types/node": "^18.17.5",
     "@types/omit-empty": "^1.0.1",
     "@types/serve-favicon": "^2.5.3",
     "@types/supertest": "^2.0.12",
-    "@typescript-eslint/eslint-plugin": "5.59.8",
-    "@typescript-eslint/parser": "5.59.8",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.62.0",
     "concurrently": "7.6.0",
-    "eslint": "8.42.0",
+    "eslint": "8.47.0",
     "eslint-config-heimdall": "1.6.0",
     "eslint-plugin-jest-extended": "^2.0.0",
     "firebase-functions-test": "3.1.0",
@@ -91,7 +91,7 @@
     "prettier": "2.8.8",
     "supertest": "^6.3.3",
     "ts-jest": "^29.0.3",
-    "tsc-alias": "1.8.6",
+    "tsc-alias": "1.8.7",
     "typescript": "4.9.5"
   }
 }
