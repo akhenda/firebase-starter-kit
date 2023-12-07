@@ -71,7 +71,7 @@
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.15",
-    "@types/fs-extra": "^9.0.13",
+    "@types/fs-extra": "^11.0.0",
     "@types/jest": "^29.5.2",
     "@types/lodash": "^4.14.191",
     "@types/morgan": "^1.9.4",
