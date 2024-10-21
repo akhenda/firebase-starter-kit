@@ -83,7 +83,7 @@
     "@typescript-eslint/parser": "5.62.0",
     "concurrently": "7.6.0",
     "eslint": "8.57.1",
-    "eslint-config-heimdall": "1.6.0",
+    "eslint-config-heimdall": "2.1.2",
     "eslint-plugin-jest-extended": "^2.0.0",
     "firebase-functions-test": "3.3.0",
     "jest": "^29.3.1",
