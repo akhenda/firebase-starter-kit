@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@apollo/server': ^4.3.0
-  '@firebase/rules-unit-testing': 2.0.7
+  '@firebase/rules-unit-testing': 4.0.0
   '@jest/globals': ^29.5.0
   '@types/body-parser': ^1.19.2
   '@types/chance': ^1.1.3
@@ -87,7 +87,7 @@ dependencies:
   youch: 3.2.2
 
 devDependencies:
-  '@firebase/rules-unit-testing': 2.0.7_firebase@9.15.0
+  '@firebase/rules-unit-testing': 4.0.0_firebase@9.15.0
   '@jest/globals': 29.5.0
   '@types/body-parser': 1.19.2
   '@types/chance': 1.1.3
@@ -1125,16 +1125,13 @@ packages:
       '@firebase/util': 1.8.0
       tslib: 2.4.1
 
-  /@firebase/rules-unit-testing/2.0.7_firebase@9.15.0:
-    resolution: {integrity: sha512-tioToru3AgRanuHLt650rmP9oeyhyc9yb3i3jtZDFz3MTpztHVFI4q6sYnIneTr9aSllsItCYYCJS5ylPOCsWg==}
-    engines: {node: '>=10.10.0'}
+  /@firebase/rules-unit-testing/4.0.0_firebase@9.15.0:
+    resolution: {integrity: sha512-+tmg/1dD5NtSwlw3mSCXN07OaftT+aonTWu1FlB+/GLDHr6EbAoRZPNWTkefZnbO1zDEaLsTG8mhT1zipPuaaQ==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
-      firebase: ^9.0.0
+      firebase: ^11.0.0
     dependencies:
       firebase: 9.15.0
-      node-fetch: 2.6.7
-    transitivePeerDependencies:
-      - encoding
     dev: true
 
   /@firebase/storage-compat/0.2.0_z6klzwxqggigirvqix3ggnu6f4:
