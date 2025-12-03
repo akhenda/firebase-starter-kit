@@ -78,7 +78,7 @@
     "@types/node": "^18.19.3",
     "@types/omit-empty": "^1.0.1",
     "@types/serve-favicon": "^2.5.3",
-    "@types/supertest": "^2.0.12",
+    "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "concurrently": "7.6.0",
