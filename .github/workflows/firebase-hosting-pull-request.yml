@@ -8,7 +8,7 @@ jobs:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.8.0
       - uses: pnpm/action-setup@v2.4.1
         name: Install PNPM
         id: pnpm-install
@@ -20,7 +20,7 @@ jobs:
       - name: Install Functions Deps (needed for NextJS Deployment)
         run: pnpm install --frozen-lockfile
         working-directory: functions
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@v0.11.0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HC_STARTER_KITS }}'
